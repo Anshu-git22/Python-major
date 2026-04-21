@@ -1,0 +1,71 @@
+{% extends 'seller-header.html' %}
+{% load static %}
+{% block content %}
+
+<section class="banner-area organic-breadcrumb">
+	<div class="container">
+		<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+			<div class="col-first">
+				<h1>Shop Category page</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<div class="container">
+
+	<!-- ✅ CENTER FIX -->
+	<div class="row justify-content-center">
+		<div class="col-xl-10 col-lg-10 col-md-12">
+
+			<section class="lattest-product-area pb-40 category-list">
+				<div class="row justify-content-center">
+					<div class="col-lg-4 col-md-6">
+						<div class="single-product">
+							<img class="img-fluid" src="{{product.product_image.url}}" alt="">
+							<div class="product-details">
+								<a href="{% url 'seller-product-details' pk=product.pk%}"><h6>{{product.product_name}}</h6></a>
+								<div class="price">
+									<h6>Rs.{{product.product_price}}</h6>
+								</div>
+                                <h4>Description :{{product.product_desc}}</h4>
+                                <h4>Category :{{product.product_category}}</h4>
+                                <div>
+                                    <a href="{% url 'seller-product-edit' pk=product.pk %}"><input type="button" value="EDIT" class="btn btn-primary"></a>
+                                    <a href="{% url 'seller-product-delete' pk=product.pk %}"><input type="button" value="DELETE" class="btn btn-danger"></a>
+                                </div>
+								<div class="prd-bottom">
+
+									<a href="" class="social-info">
+										<span class="ti-bag"></span>
+										<p class="hover-text">add to bag</p>
+									</a>
+
+									<a href="" class="social-info">
+										<span class="lnr lnr-heart"></span>
+										<p class="hover-text">Wishlist</p>
+									</a>
+
+									<a href="" class="social-info">
+										<span class="lnr lnr-sync"></span>
+										<p class="hover-text">compare</p>
+									</a>
+
+									<a href="" class="social-info">
+										<span class="lnr lnr-move"></span>
+										<p class="hover-text">view more</p>
+									</a>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
