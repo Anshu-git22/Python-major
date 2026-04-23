@@ -53,18 +53,15 @@
 						<ul class="nav navbar-nav menu_nav ml-auto">
 							<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
 							<li class="nav-item"><a class="nav-link" href="{% url 'shop' %}">Shop</a></li>
-							<li class="nav-item submenu dropdown">
-								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
-								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="tracking.html">Tracking</a></li>
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
-								</ul>
-							</li>
 							{% if request.session.email %}
-							<li class="nav-item"><a class="nav-link" href="{% url 'change-password' %}">Change Password</a></li>
-							<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout({{request.session.fname}})</a></li>
-							<a href="{% url 'profile' %}"><img src="{{request.session.profile_picture}}" style="width: 50px; height:50px; border-radius:50%;"></a>
+									<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout({{request.session.uname}})</a></li>
+									<li class="nav-item" style="display: flex; align-items: center;">
+    									<a href="{% url 'profile' %}" style="display: flex; align-items: center; padding: 0 0 0 15px;">
+       									<img src="{{request.session.profile_picture}}" 
+             							style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;" 
+             							alt="">
+    									</a>
+									</li>
 							{% else %}
 							<li class="nav-item"><a class="nav-link" href="{% url 'signup' %}">Signup</a></li>
 							<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
@@ -72,8 +69,10 @@
 							<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
 						</ul>
 						<ul class="nav navbar-nav navbar-right">
+							{% if request.session.email %}
 							<li class="nav-item"><a href="{% url 'cart' %}" class="cart"><span class="ti-bag"></span>({{request.session.cart_count}})</a></li>
 							<li class="nav-item"><a href="{% url 'wishlist' %}" class="cart"><span><img src="{% static 'img/heart1.svg' %}" style="width: 25px;height: 20px;"></span>({{request.session.wishlist_count}})</a></li>
+							{% endif %}
 						</ul>
 					</div>
 				</div>
